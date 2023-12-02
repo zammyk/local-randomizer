@@ -1,23 +1,27 @@
 <template>
 <main>
   <Navbar></Navbar>
+  <Game></Game>
 </main>
 </template>
 
-<script>
+<script scoped>
 import Navbar from './components/Navbar.vue'
+import Game from './components/Game.vue'
 
 export default {
   name: 'App',
   components: {
-    Navbar
+    Navbar,
+    Game
   }
 }
 </script>
 
 <style>
-html,body {
-  padding: 0;
+html,
+body {
+  height: 100%;
   margin: 0;
 }
 </style>

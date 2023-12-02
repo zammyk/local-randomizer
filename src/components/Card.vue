@@ -24,11 +24,17 @@ export default {
 
 <style scoped>
 .card {
-border: 1px solid #ccc;
-border-radius: 8px;
-padding: 16px;
-margin: 16px;
-width: 300px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+display: flex;
+flex-direction: column;
+flex: 0 0 100%;
+padding: 20px;
+border-radius: 12px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+scroll-snap-align: start;
+transition: all 0.2s;
+width: 15rem;
+}
+.card:not(:last-child) {
+  margin-right: 10px;
 }
 </style>
