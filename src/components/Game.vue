@@ -1,6 +1,6 @@
 <template>
 <div id="main">
-    <div class="card-container">
+    <div class="card-container" ref="cardContainer">
         <Card :content="'hello'"></Card>
         <Card :content="'bye'"></Card>
         <Card :content="'cello'"></Card>
@@ -22,6 +22,26 @@ import Card from './Card.vue'
 export default {
   components: {
     Card
+  },
+  data() {
+    return {
+      currentCardIndex: 0
+    };
+  },
+  methods: {
+    switchToCard(index) {
+      this.currentCardIndex = index;
+      this.scrollToCurrentCard();
+    },
+    scrollToCurrentCard() {
+      const cardContainer = this.$refs.cardContainer;
+      const cardWidth = cardContainer.offsetWidth;
+      const scrollTo = this.currentCardIndex * cardWidth;
+      cardContainer.scrollTo({
+        left: scrollTo,
+        behavior: 'smooth'
+      });
+    }
   }
 }
 </script>
