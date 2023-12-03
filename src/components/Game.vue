@@ -16,31 +16,30 @@
 </template>
 
 <script>
-/* eslint-disable */
 import Card from './Card.vue'
 
 export default {
   components: {
     Card
   },
-  data() {
+  data () {
     return {
       currentCardIndex: 0
-    };
+    }
   },
   methods: {
-    switchToCard(index) {
-      this.currentCardIndex = index;
-      this.scrollToCurrentCard();
+    switchToCard (index) {
+      this.currentCardIndex = index
+      this.scrollToCurrentCard()
     },
-    scrollToCurrentCard() {
-      const cardContainer = this.$refs.cardContainer;
-      const cardWidth = cardContainer.offsetWidth;
-      const scrollTo = this.currentCardIndex * cardWidth;
+    scrollToCurrentCard () {
+      const cardContainer = this.$refs.cardContainer
+      const cardWidth = cardContainer.offsetWidth
+      const scrollTo = this.currentCardIndex * cardWidth
       cardContainer.scrollTo({
         left: scrollTo,
         behavior: 'smooth'
-      });
+      })
     }
   }
 }
