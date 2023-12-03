@@ -32,8 +32,13 @@ border-radius: 12px;
 scroll-snap-align: start;
 transition: all 0.2s;
 width: 20rem;
+justify-content: center;
+align-items: center;
 }
 .card:not(:last-child) {
   margin-right: 10px;
+}
+p {
+  font-size: 3rem;
 }
 </style>

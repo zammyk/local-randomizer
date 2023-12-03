@@ -17,7 +17,8 @@ export default {
   data () {
     return {
       currentCardIndex: 0,
-      cards: null
+      cards: null,
+      unusedCards: null
     }
   },
   mounted () {
@@ -27,8 +28,10 @@ export default {
         this.cards = [{
           'content': 'Welcome, press randomize to start'
         }]
+        this.unusedCards = [0]
         for (let card in data.cards) {
           this.cards.push(data.cards[card])
+          this.unusedCards.push(1 + parseInt(card))
         }
       })
       .catch(error => {
@@ -36,8 +39,15 @@ export default {
       })
   },
   methods: {
+    useCurrentCard () {
+      this.cards[this.currentCardIndex].used = true
+      const index = this.unusedCards.indexOf(this.currentCardIndex)
+      this.unusedCards.splice(index, 1)
+    },
     switchToRandomCard () {
-      this.currentCardIndex = Math.floor(Math.random() * this.cards.length)
+      this.useCurrentCard()
+      console.log(this.unusedCards)
+      this.currentCardIndex = this.unusedCards[Math.floor(Math.random() * this.unusedCards.length)]
       this.scrollToCurrentCard()
     },
     scrollToCurrentCard () {
@@ -61,6 +71,7 @@ export default {
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     width: 20rem;
+    height: 30rem;
 }
 #main {
 width: 20rem;
