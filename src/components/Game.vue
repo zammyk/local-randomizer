@@ -1,8 +1,9 @@
 <template>
 <div id="main">
     <div class="card-container" ref="cardContainer">
-        <Card v-for="card in cardData.cards" :key="card.id" :content="card.content"></Card>
+        <Card v-for="card in cards" :key="card.id" :content="card.content"></Card>
     </div>
+    <button @click="switchToRandomCard">Randomize</button>
 </div>
 </template>
 
@@ -16,22 +17,27 @@ export default {
   data () {
     return {
       currentCardIndex: 0,
-      cardData: null
+      cards: null
     }
   },
   mounted () {
     fetch('/static/card-content.json')
       .then(response => response.json())
       .then(data => {
-        this.cardData = data
+        this.cards = [{
+          'content': 'Welcome, press randomize to start'
+        }]
+        for (let card in data.cards) {
+          this.cards.push(data.cards[card])
+        }
       })
       .catch(error => {
         console.error('Error loading JSON data:', error)
       })
   },
   methods: {
-    switchToCard (index) {
-      this.currentCardIndex = index
+    switchToRandomCard () {
+      this.currentCardIndex = Math.floor(Math.random() * this.cards.length)
       this.scrollToCurrentCard()
     },
     scrollToCurrentCard () {
