@@ -1,16 +1,7 @@
 <template>
 <div id="main">
     <div class="card-container" ref="cardContainer">
-        <Card :content="'hello'"></Card>
-        <Card :content="'bye'"></Card>
-        <Card :content="'cello'"></Card>
-        <Card :content="'cy'"></Card>
-        <Card :content="'dye'"></Card>
-        <Card :content="'hello'"></Card>
-        <Card :content="'bye'"></Card>
-        <Card :content="'cello'"></Card>
-        <Card :content="'cy'"></Card>
-        <Card :content="'dye'"></Card>
+        <Card v-for="card in cardData.cards" :key="card.id" :content="card.content"></Card>
     </div>
 </div>
 </template>
@@ -24,8 +15,19 @@ export default {
   },
   data () {
     return {
-      currentCardIndex: 0
+      currentCardIndex: 0,
+      cardData: null
     }
+  },
+  mounted () {
+    fetch('/static/card-content.json')
+      .then(response => response.json())
+      .then(data => {
+        this.cardData = data
+      })
+      .catch(error => {
+        console.error('Error loading JSON data:', error)
+      })
   },
   methods: {
     switchToCard (index) {
