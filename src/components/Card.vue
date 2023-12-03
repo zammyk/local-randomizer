@@ -26,13 +26,12 @@ export default {
 .card {
 display: flex;
 flex-direction: column;
-flex: 0 0 100%;
+flex: 0 0 calc(100% - 1rem);
 padding: 20px;
 border-radius: 12px;
-box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
 scroll-snap-align: start;
 transition: all 0.2s;
-width: 15rem;
+width: 20rem;
 }
 .card:not(:last-child) {
   margin-right: 10px;
