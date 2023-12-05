@@ -12,11 +12,17 @@ export default {
   methods: {
     cardStyle () {
       return {
-        backgroundColor: this.customBackgroundColor()
+        background: this.customBackgroundColor()
       }
     },
     customBackgroundColor () {
-      return 'hsl(' + 360 * Math.random() + ',' + (25 + 70 * Math.random()) + '%,' + (85 + 10 * Math.random()) + '%)'
+      const angle = Math.floor(Math.random() * 360)
+      const color1 = this.generateRandomColor()
+      const color2 = this.generateRandomColor()
+      return `linear-gradient(${angle}deg, ${color1}, ${color2})`
+    },
+    generateRandomColor () {
+      return `hsl(${Math.random() * 360},${25 + 70 * Math.random()}%,${85 + 10 * Math.random()}%)`
     }
   }
 }

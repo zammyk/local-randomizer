@@ -47,6 +47,7 @@ export default {
     switchToRandomCard () {
       this.useCurrentCard()
       console.log(this.unusedCards)
+      // TODO: Add a final game over/ play again card if unusedCards is empty
       this.currentCardIndex = this.unusedCards[Math.floor(Math.random() * this.unusedCards.length)]
       this.scrollToCurrentCard()
     },
