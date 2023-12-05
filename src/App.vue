@@ -1,5 +1,5 @@
 <template>
-<main>
+<main class="main-window">
   <Navbar></Navbar>
   <Game></Game>
 </main>
@@ -23,5 +23,10 @@ html,
 body {
   height: 100%;
   margin: 0;
+}
+.main-window {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 </style>
