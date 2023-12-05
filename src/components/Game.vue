@@ -3,7 +3,10 @@
     <div class="card-container" ref="cardContainer">
         <Card v-for="card in cards" :key="card.id" :content="card.content"></Card>
     </div>
-    <button @click="switchToRandomCard">Randomize</button>
+    <div class="buttons">
+      <button @click="switchToRandomCard">Randomize</button>
+      <button>Reset</button>
+    </div>
 </div>
 </template>
 
@@ -84,5 +87,19 @@ align-items: center;
 justify-content: center;
 gap: 3rem;
 flex: 1;
+background-color: #111;
+}
+.buttons {
+  display: flex;
+  gap: 5rem;
+}
+button {
+  font-size: 1.5rem;
+  padding: 0.5rem 0;
+  width: 12rem;
+  border: none;
+  color: white;
+  background-color: #333;
+  border-radius: 2px;
 }
 </style>
