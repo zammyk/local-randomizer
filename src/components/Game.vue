@@ -5,7 +5,7 @@
     </div>
     <div class="buttons">
       <button @click="switchToRandomCard">Randomize</button>
-      <button>Reset</button>
+      <button @click="resetState">Reset</button>
     </div>
 </div>
 </template>
@@ -25,21 +25,7 @@ export default {
     }
   },
   mounted () {
-    fetch('/static/card-content.json')
-      .then(response => response.json())
-      .then(data => {
-        this.cards = [{
-          'content': 'Welcome, press randomize to start'
-        }]
-        this.unusedCards = [0]
-        for (let card in data.cards) {
-          this.cards.push(data.cards[card])
-          this.unusedCards.push(1 + parseInt(card))
-        }
-      })
-      .catch(error => {
-        console.error('Error loading JSON data:', error)
-      })
+    this.resetState()
   },
   methods: {
     useCurrentCard () {
@@ -62,6 +48,25 @@ export default {
         left: scrollTo,
         behavior: 'smooth'
       })
+    },
+    resetState () {
+      fetch('/static/card-content.json')
+        .then(response => response.json())
+        .then(data => {
+          this.cards = [{
+            'content': 'Welcome, press randomize to start'
+          }]
+          this.unusedCards = [0]
+          for (let card in data.cards) {
+            this.cards.push(data.cards[card])
+            this.unusedCards.push(1 + parseInt(card))
+          }
+        })
+        .catch(error => {
+          console.error('Error loading JSON data:', error)
+        })
+      this.currentCardIndex = 0
+      this.scrollToCurrentCard()
     }
   }
 }
