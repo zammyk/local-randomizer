@@ -1,19 +1,21 @@
 <template>
 <main class="main-window">
   <Navbar></Navbar>
-  <Game></Game>
+  <GameEditor></GameEditor>
 </main>
 </template>
 
 <script scoped>
 import Navbar from './components/Navbar.vue'
 import Game from './components/Game.vue'
+import GameEditor from './components/GameEditor.vue'
 
 export default {
   name: 'App',
   components: {
     Navbar,
-    Game
+    Game,
+    GameEditor
   }
 }
 </script>
