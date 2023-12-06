@@ -1,7 +1,8 @@
 <template>
 <main class="main-window">
-  <Navbar></Navbar>
-  <GameEditor></GameEditor>
+  <Navbar @open-card-edit="isGameEditorOpen = !isGameEditorOpen"></Navbar>
+  <Game v-if="!isGameEditorOpen"></Game>
+  <GameEditor v-if="isGameEditorOpen"></GameEditor>
 </main>
 </template>
 
@@ -16,6 +17,11 @@ export default {
     Navbar,
     Game,
     GameEditor
+  },
+  data () {
+    return {
+      isGameEditorOpen: false
+    }
   }
 }
 </script>

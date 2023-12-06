@@ -16,7 +16,6 @@ const store = new Vuex.Store({
   },
   actions: {
     async initCards () {
-      console.log('here')
       fetch('/static/card-content.json')
         .then(response => response.json())
         .then(data => {

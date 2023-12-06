@@ -3,12 +3,22 @@
     <div class="container">
         <div class="title">Randomizer</div>
         <div style="margin-left: auto; display: flex; gap: 1rem; align-items: center;">
-            <a href="/">Home</a>
-            <a href="/about">About</a>
+            <button @click="switchToEditor">Edit Cards</button>
         </div>
     </div>
 </nav>
 </template>
+
+<script>
+export default {
+  methods: {
+    switchToEditor () {
+      // The first argument is the event name, and the second is the data you want to pass
+      this.$emit('open-card-edit', 'Open Cards Editor')
+    }
+  }
+}
+</script>
 
 <style scoped>
 .navbar {
