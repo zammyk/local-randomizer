@@ -35,7 +35,6 @@ export default {
     },
     switchToRandomCard () {
       this.useCurrentCard()
-      console.log(this.unusedCards)
       // TODO: Add a final game over/ play again card if unusedCards is empty
       this.currentCardIndex = this.unusedCards[Math.floor(Math.random() * this.unusedCards.length)]
       this.scrollToCurrentCard()
@@ -49,22 +48,18 @@ export default {
         behavior: 'smooth'
       })
     },
-    resetState () {
-      fetch('/static/card-content.json')
-        .then(response => response.json())
-        .then(data => {
-          this.cards = [{
-            'content': 'Welcome, press randomize to start'
-          }]
-          this.unusedCards = [0]
-          for (let card in data.cards) {
-            this.cards.push(data.cards[card])
-            this.unusedCards.push(1 + parseInt(card))
-          }
-        })
-        .catch(error => {
-          console.error('Error loading JSON data:', error)
-        })
+    async resetState () {
+      if (this.cards == null) {
+        await this.$store.dispatch('initCards')
+      }
+      this.cards = [{
+        'content': 'Welcome, press randomize to start'
+      }]
+      this.unusedCards = [0]
+      for (let card in this.$store.state.cards) {
+        this.cards.push(this.$store.state.cards[card])
+        this.unusedCards.push(1 + parseInt(card))
+      }
       this.currentCardIndex = 0
       this.scrollToCurrentCard()
     }
