@@ -13,7 +13,6 @@
 export default {
   methods: {
     switchToEditor () {
-      // The first argument is the event name, and the second is the data you want to pass
       this.$emit('open-card-edit', 'Open Cards Editor')
     }
   }
