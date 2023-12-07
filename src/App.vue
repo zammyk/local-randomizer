@@ -22,9 +22,6 @@ export default {
     return {
       isGameEditorOpen: false
     }
-  },
-  beforeMount () {
-    this.$store.dispatch('initCards')
   }
 }
 </script>

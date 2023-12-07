@@ -49,7 +49,7 @@ export default {
       })
     },
     async resetState () {
-      if (this.cards == null) {
+      if (this.$store.state.cards.length === 0) {
         await this.$store.dispatch('initCards')
       }
       this.cards = [{
@@ -69,13 +69,13 @@ export default {
 
 <style scoped>
 .card-container {
-    display: flex;
-    padding: 25px 1rem;
-    list-style: none;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    width: 20rem;
-    height: 30rem;
+display: flex;
+padding: 25px 1rem;
+list-style: none;
+overflow-x: scroll;
+scroll-snap-type: x mandatory;
+width: 20rem;
+height: 30rem;
 }
 #main {
 width: 20rem;
@@ -90,16 +90,16 @@ flex: 1;
 background-color: #111;
 }
 .buttons {
-  display: flex;
-  gap: 5rem;
+display: flex;
+gap: 5rem;
 }
 button {
-  font-size: 1.5rem;
-  padding: 0.5rem 0;
-  width: 12rem;
-  border: none;
-  color: white;
-  background-color: #333;
-  border-radius: 2px;
+font-size: 1.5rem;
+padding: 0.5rem 0;
+width: 12rem;
+border: none;
+color: white;
+background-color: #333;
+border-radius: 2px;
 }
 </style>

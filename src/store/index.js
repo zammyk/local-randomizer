@@ -22,14 +22,15 @@ const store = new Vuex.Store({
 
         let cards = Object.values(data.cards);
         commit('setCards', cards);
-        console.log(this.state.cards)
       } catch (error) {
         console.error('Error loading JSON data:', error);
       }
     }
   },
   getters: {
-    // You can define getters if needed
+    getCards: (state) => {
+      return state.cards
+    }
   },
   modules: {
     // For structuring your store with modules (if needed)

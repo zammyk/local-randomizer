@@ -3,7 +3,7 @@
   <div v-for="(card, index) in cards" :key="index">
     <input v-model="card.content"/>
   </div>
-  <button @click="test">test button</button>
+  <button @click="updateCards">Update</button>
 </div>
 </template>
 
@@ -15,22 +15,11 @@ export default {
     }
   },
   mounted () {
-    fetch('/static/card-content.json')
-      .then(response => response.json())
-      .then(data => {
-        this.cards = []
-        for (let card in data.cards) {
-          this.cards.push(data.cards[card])
-        }
-        console.log(this.cards)
-      })
-      .catch(error => {
-        console.error('Error loading JSON data:', error)
-      })
+    this.cards = this.$store.state.cards
   },
   methods: {
-    test () {
-      console.log(this.cards)
+    updateCards () {
+      this.$store.commit('setCards', this.cards)
     }
   }
 }
@@ -38,8 +27,8 @@ export default {
 
 <style scoped>
 #main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+flex: 1;
+display: flex;
+flex-direction: column;
 }
 </style>
