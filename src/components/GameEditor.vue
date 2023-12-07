@@ -30,5 +30,14 @@ export default {
 flex: 1;
 display: flex;
 flex-direction: column;
+padding: 5rem 5rem 0 5rem;
+align-items: center;
+gap: 0.25rem
+}
+input, button {
+  font-size: 2rem;
+}
+input {
+  width: 75rem;
 }
 </style>

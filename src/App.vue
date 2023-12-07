@@ -27,16 +27,22 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 html,
 body {
   height: 100%;
   margin: 0;
   background-color: #111;
-  font-family: sans-serif;
 }
 .main-window {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+*{
+  font-family: 'Poiret One', sans-serif;
+}
+*:focus {
+  outline: none;
 }
 </style>

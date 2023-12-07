@@ -111,8 +111,7 @@ border-radius: 0.5em;
 width: 12em;
 height: 3em;
 text-transform: uppercase;
-font-weight: bold;
-font-family: sans-serif;
+font-weight: 800;
 letter-spacing: 0.1em;
 text-align: center;
 line-height: 3em;
@@ -121,6 +120,7 @@ overflow: hidden;
 z-index: 1;
 transition: 0.5s;
 margin: 1em;
+cursor: pointer;
 }
 
 nav div span {
