@@ -45,6 +45,7 @@ align-items: center;
   margin-right: 10px;
 }
 p {
-  font-size: 3rem;
+  font-size: 2.5rem;
+  text-align : center;
 }
 </style>

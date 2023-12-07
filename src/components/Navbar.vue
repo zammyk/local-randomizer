@@ -39,6 +39,7 @@ text-decoration: none;
 }
 
 .title {
-    font-size: 2rem;
+font-size: 2rem;
+color: black;
 }
 </style>
