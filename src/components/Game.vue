@@ -4,8 +4,16 @@
         <Card v-for="card in cards" :key="card.id" :content="card.content"></Card>
     </div>
     <div class="buttons">
-      <button @click="switchToRandomCard">Randomize</button>
-      <button @click="resetState">Reset</button>
+      <nav>
+        <div>
+          Randomize
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div>
+          Reset
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </nav>
     </div>
 </div>
 </template>
@@ -89,17 +97,66 @@ gap: 3rem;
 flex: 1;
 background-color: #111;
 }
-.buttons {
+.buttons nav{
 display: flex;
 gap: 5rem;
 }
-button {
-font-size: 1.5rem;
-padding: 0.5rem 0;
-width: 12rem;
-border: none;
-color: white;
-background-color: #333;
-border-radius: 2px;
+
+nav div {
+    --c: #444;
+    color: var(--c);
+    font-size: 16px;
+    border: 0.3em solid var(--c);
+    border-radius: 0.5em;
+    width: 12em;
+    height: 3em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 3em;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.5s;
+    margin: 1em;
+}
+
+nav div span {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+nav div:hover {
+    color: black;
+}
+
+nav div:hover span {
+    transform: translateY(0) scale(2);
+}
+
+nav div span:nth-child(1) {
+    --n: 1;
+}
+
+nav div span:nth-child(2) {
+    --n: 2;
+}
+
+nav div span:nth-child(3) {
+    --n: 3;
+}
+
+nav div span:nth-child(4) {
+    --n: 4;
 }
 </style>
