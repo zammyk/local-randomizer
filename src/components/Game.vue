@@ -5,11 +5,11 @@
     </div>
     <div class="buttons">
       <nav>
-        <div>
+        <div @click="switchToRandomCard">
           Randomize
           <span></span><span></span><span></span><span></span>
         </div>
-        <div>
+        <div @click="resetState">
           Reset
           <span></span><span></span><span></span><span></span>
         </div>
