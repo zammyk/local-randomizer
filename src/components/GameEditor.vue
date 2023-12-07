@@ -27,6 +27,7 @@ export default {
   methods: {
     updateCards () {
       this.$store.commit('setCards', this.cards)
+      alert('Cards have been updated')
     }
   }
 }

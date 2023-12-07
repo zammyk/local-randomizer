@@ -3,7 +3,10 @@
     <div class="container">
         <div class="title">Randomizer</div>
         <div style="margin-left: auto; display: flex; gap: 1rem; align-items: center;">
-            <div class="edit-button" @click="switchToEditor"><p>Edit Cards</p></div>
+            <div class="edit-button" @click="switchToEditor">
+              <p v-if="!isEditorOpen">Edit Cards</p>
+              <p v-else>Back</p>
+            </div>
         </div>
     </div>
 </nav>
@@ -14,6 +17,12 @@ export default {
   methods: {
     switchToEditor () {
       this.$emit('open-card-edit', 'Open Cards Editor')
+      this.isEditorOpen = !this.isEditorOpen
+    }
+  },
+  data () {
+    return {
+      isEditorOpen: false
     }
   }
 }
