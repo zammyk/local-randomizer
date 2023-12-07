@@ -3,7 +3,14 @@
   <div v-for="(card, index) in cards" :key="index">
     <input v-model="card.content"/>
   </div>
-  <button @click="updateCards">Update</button>
+  <div>
+    <nav @click="updateCards">
+        <div>
+          Randomize
+          <span></span><span></span><span></span><span></span>
+        </div>
+    </nav>
+  </div>
 </div>
 </template>
 
@@ -39,5 +46,63 @@ input, button {
 }
 input {
   width: 75rem;
+}
+
+nav div {
+--c: #444;
+color: var(--c);
+font-size: 16px;
+border: 0.3em solid var(--c);
+border-radius: 0.5em;
+width: 12em;
+height: 3em;
+text-transform: uppercase;
+font-weight: 800;
+letter-spacing: 0.1em;
+text-align: center;
+line-height: 3em;
+position: relative;
+overflow: hidden;
+z-index: 1;
+transition: 0.5s;
+margin: 1em;
+cursor: pointer;
+}
+
+nav div span {
+position: absolute;
+width: 25%;
+height: 100%;
+background-color: var(--c);
+transform: translateY(150%);
+border-radius: 50%;
+left: calc((var(--n) - 1) * 25%);
+transition: 0.5s;
+transition-delay: calc((var(--n) - 1) * 0.1s);
+z-index: -1;
+}
+
+nav div:hover {
+color: black;
+}
+
+nav div:hover span {
+transform: translateY(0) scale(2);
+}
+
+nav div span:nth-child(1) {
+--n: 1;
+}
+
+nav div span:nth-child(2) {
+--n: 2;
+}
+
+nav div span:nth-child(3) {
+--n: 3;
+}
+
+nav div span:nth-child(4) {
+--n: 4;
 }
 </style>

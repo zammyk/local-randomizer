@@ -3,7 +3,7 @@
     <div class="container">
         <div class="title">Randomizer</div>
         <div style="margin-left: auto; display: flex; gap: 1rem; align-items: center;">
-            <button @click="switchToEditor">Edit Cards</button>
+            <div class="edit-button" @click="switchToEditor"><p>Edit Cards</p></div>
         </div>
     </div>
 </nav>
@@ -41,5 +41,12 @@ text-decoration: none;
 .title {
 font-size: 2rem;
 color: black;
+}
+
+.edit-button{
+  cursor: pointer;
+}
+.edit-button:hover {
+  text-decoration: underline;
 }
 </style>
