@@ -6,7 +6,7 @@
   <div>
     <nav @click="updateCards">
         <div>
-          Randomize
+          Update
           <span></span><span></span><span></span><span></span>
         </div>
     </nav>
